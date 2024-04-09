@@ -14,4 +14,4 @@ import { BandModule } from 'modules/band/band.module';
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,4 +4,4 @@ import { BandResolver } from './resolver/band.resolver';
 @Module({
   providers: [BandResolver],
 })
-export class BandModule { }
+export class BandModule {}
