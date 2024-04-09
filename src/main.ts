@@ -5,7 +5,9 @@ import { AppDataSource } from './infraestructure/db/sql/data-source';
 async function bootstrap() {
   AppDataSource.initialize()
     .then(async (ds) => {
-      ds.query(`SELECT 1 + 2 AS "res"`).then((res) => console.log(res));
+      ds.query(`SELECT 'Connection Working' AS "Status", NOW() AS "Date"`).then(
+        (res) => console.log(res),
+      );
 
       const app = await NestFactory.create(AppModule);
 
