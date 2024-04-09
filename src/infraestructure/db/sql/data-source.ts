@@ -1,7 +1,4 @@
-import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { Band } from './entities/band.entity';
-import { BandMember } from './entities/band-member.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +7,7 @@ export const AppDataSource = new DataSource({
   username: 'postgres',
   password: '123',
   database: 'test',
-  entities: [Band, BandMember],
+  entities: ['src/infraestructure/db/sql/entities/*.entity.{ts,js}'],
   subscribers: [],
-  migrations: [],
+  migrations: ['src/infraestructure/db/sql/migrations/*.{ts,js}'],
 });
