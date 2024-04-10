@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { CreateBandMemberGQL } from './create-band-member.gql';
+import { CreateBandMemberGQL } from './band-member.gql';
 
 @InputType()
 export class CreateBandGQL {
