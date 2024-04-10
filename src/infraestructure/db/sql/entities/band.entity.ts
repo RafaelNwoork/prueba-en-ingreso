@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BandMember } from './band-member.entity';
+import { BandMembers } from './band-member.entity';
 
 @Entity()
 export class Band {
@@ -18,6 +18,8 @@ export class Band {
   @Column()
   active: boolean;
 
-  @OneToMany(() => BandMember, (band_member) => band_member.band)
-  members: BandMember[];
+  @OneToMany(() => BandMembers, (band_members) => band_members.band, {
+    eager: true,
+  })
+  members: BandMembers[];
 }

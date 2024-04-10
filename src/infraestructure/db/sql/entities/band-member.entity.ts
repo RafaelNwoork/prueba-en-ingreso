@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Band } from './band.entity';
 
 @Entity()
-export class BandMember {
+export class BandMembers {
   @PrimaryGeneratedColumn()
   id: number;
 

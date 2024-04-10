@@ -13,6 +13,7 @@ export const SQLCredentials: DataSourceOptions = {
   entities: Entities,
   subscribers: [],
   migrations: Migrations,
+  logging: true,
 };
 
 export default new DataSource(SQLCredentials);

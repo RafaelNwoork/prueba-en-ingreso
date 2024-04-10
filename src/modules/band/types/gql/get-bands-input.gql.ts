@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { BandMemberGQL } from 'shared/types/gql/band-member.gql';
 
 @ObjectType()
 export class GetBandInputGQL {
@@ -16,4 +17,7 @@ export class GetBandInputGQL {
 
   @Field({ nullable: true })
   active: boolean;
+
+  @Field(() => [BandMemberGQL], { nullable: true })
+  members: BandMemberGQL[];
 }

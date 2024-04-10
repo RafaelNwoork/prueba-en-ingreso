@@ -20,9 +20,4 @@ export class BandResolver {
   ): Promise<GetBandInputGQL | null> {
     return this.bandService.findOne(id);
   }
-
-  @ResolveField(() => [BandMemberGQL])
-  getBandMembers(/*@Parent() band: Band*/) {
-    return [];
-  }
 }

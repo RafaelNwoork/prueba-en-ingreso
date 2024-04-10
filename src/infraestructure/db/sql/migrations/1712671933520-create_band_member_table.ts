@@ -6,7 +6,8 @@ export class CreateBandMemberTable1712671933520 implements MigrationInterface {
             id SERIAL PRIMARY KEY,
             name VARCHAR NOT NULL,
             role VARCHAR NOT NULL,
-            band_id INTEGER REFERENCES band(id)
+            "bandId" INTEGER NOT NULL,
+            CONSTRAINT "bandId" FOREIGN KEY("bandId") REFERENCES band(id)
         )`);
   }
 
