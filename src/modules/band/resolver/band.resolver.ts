@@ -4,6 +4,7 @@ import { GetBandOutputGQL } from '../types/gql/get-bands-output.gql';
 import { GetBandInputGQL } from '../types/gql/get-bands-input.gql';
 import { BandGQL } from 'shared/types/gql/band.gql';
 import { CreateBandGQL } from '../types/gql/create/band.gql';
+import { EditBandGQL } from '../types/gql/edit/band-input.gql';
 
 @Resolver(() => BandGQL)
 export class BandResolver {
@@ -26,5 +27,12 @@ export class BandResolver {
     @Args('createBandData') createBandData: CreateBandGQL,
   ): Promise<GetBandInputGQL> {
     return this.bandService.createBand(createBandData);
+  }
+
+  @Mutation(() => GetBandInputGQL)
+  async editBand(
+    @Args('editBandData') editBandData: EditBandGQL,
+  ): Promise<GetBandInputGQL | null> {
+    return this.bandService.editBand(editBandData);
   }
 }

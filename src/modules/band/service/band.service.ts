@@ -7,6 +7,7 @@ import { GetBandInputGQL } from '../types/gql/get-bands-input.gql';
 import { CreateBandGQL } from '../types/gql/create/band.gql';
 import { BandGQL } from 'shared/types/gql/band.gql';
 import { BandMembers } from 'infraestructure/db/sql/entities/band-member.entity';
+import { EditBandGQL } from '../types/gql/edit/band-input.gql';
 
 @Injectable()
 export class BandService {
@@ -40,6 +41,28 @@ export class BandService {
 
         // Le agrego los miembros creados al objeto de la banda.
         band.members = await this.membersRepository.save(members);
+
+        return band;
+      });
+  }
+
+  async editBand(data: EditBandGQL): Promise<BandGQL | null> {
+    const { name, genre, country, active, members } = data;
+
+    return this.bandRepository
+      .update({ id: data.id }, { name, genre, country, active })
+      .then((band) => {
+        members?.forEach((member) =>
+          this.membersRepository.update(
+            { id: member.id },
+            { name: member.name, role: member.role },
+          ),
+        );
+
+        return band;
+      })
+      .then(() => {
+        const band = this.bandRepository.findOneBy({ id: data.id });
 
         return band;
       });
