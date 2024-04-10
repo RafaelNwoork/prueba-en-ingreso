@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Band } from 'infraestructure/db/sql/entities/band.entity';
 import { Repository } from 'typeorm';
@@ -26,23 +26,19 @@ export class BandService {
   }
 
   async createBand(data: CreateBandGQL): Promise<BandGQL> {
-    const logger = new Logger();
+    const { name, genre, country, active } = data;
+
     return this.bandRepository
-      .save({
-        name: data.name,
-        genre: data.genre,
-        country: data.country,
-        active: data.active,
-      })
+      .save({ name, genre, country, active })
       .then(async (band) => {
+        // Esto es necesario para que los miembros tengan
+        // la ID de la banda recién creada.
         const members = data.members.map((member) => ({
           ...member,
           band,
         }));
 
-        logger.debug(band);
-        logger.debug(members);
-
+        // Le agrego los miembros creados al objeto de la banda.
         band.members = await this.membersRepository.save(members);
 
         return band;
