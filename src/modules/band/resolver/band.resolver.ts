@@ -1,9 +1,8 @@
-import { Args, Int, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { BandService } from '../service/band.service';
 import { GetBandOutputGQL } from '../types/gql/get-bands-output.gql';
 import { GetBandInputGQL } from '../types/gql/get-bands-input.gql';
 import { BandGQL } from 'shared/types/gql/band.gql';
-import { BandMemberGQL } from 'shared/types/gql/band-member.gql';
 
 @Resolver(() => BandGQL)
 export class BandResolver {
