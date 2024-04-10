@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import Migrations from './migrations';
 import Entities from './entities';
 
-export const AppDataSource = new DataSource({
+export const SQLCredentials: DataSourceOptions = {
   type: 'postgres',
   host: '172.27.32.1',
   port: 5432,
@@ -13,4 +13,6 @@ export const AppDataSource = new DataSource({
   entities: Entities,
   subscribers: [],
   migrations: Migrations,
-});
+};
+
+export default new DataSource(SQLCredentials);
