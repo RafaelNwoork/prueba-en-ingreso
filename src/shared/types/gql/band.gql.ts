@@ -1,8 +1,8 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { BandMember } from './band-member.gql';
+import { BandMemberGQL } from './band-member.gql';
 
 @ObjectType()
-export class Band {
+export class BandGQL {
   @Field(() => ID)
   id: number;
 
@@ -18,6 +18,6 @@ export class Band {
   @Field()
   active: boolean;
 
-  @Field(() => [BandMember])
-  members: BandMember[];
+  @Field(() => [BandMemberGQL])
+  members: BandMemberGQL[];
 }
