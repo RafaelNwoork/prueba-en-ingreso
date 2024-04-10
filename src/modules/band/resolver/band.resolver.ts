@@ -1,15 +1,13 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { Band } from '../types/gql/band.gql';
+import { BandService } from '../service/band.service';
+import { GetBandOutputGQL } from '../types/gql/get-bands-output.gql';
 
-@Resolver(() => Band)
+@Resolver()
 export class BandResolver {
-  /**
-   * query sayHello {
-   *  sayHello
-   * }
-   */
-  @Query(() => String)
-  sayHello(): string {
-    return 'Hello World';
+  constructor(private bandService: BandService) {}
+
+  @Query(() => GetBandOutputGQL)
+  async getBands(): Promise<GetBandOutputGQL> {
+    return this.bandService.findAll();
   }
 }
