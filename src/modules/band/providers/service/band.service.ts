@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Band } from 'infraestructure/db/sql/entities/band.entity';
 import { Repository } from 'typeorm';
-import { GetBandOutputGQL } from '../types/gql/get-bands-output.gql';
-import { GetBandInputGQL } from '../types/gql/get-bands-input.gql';
-import { CreateBandGQL } from '../types/gql/create/band.gql';
+import { GetBandOutputGQL } from '../../types/gql/get-bands-output.gql';
+import { GetBandInputGQL } from '../../types/gql/get-bands-input.gql';
+import { CreateBandGQL } from '../../types/gql/create/band.gql';
 import { BandGQL } from 'shared/types/gql/band.gql';
 import { BandMembers } from 'infraestructure/db/sql/entities/band-member.entity';
-import { EditBandGQL } from '../types/gql/edit/band-input.gql';
+import { EditBandGQL } from '../../types/gql/edit/band-input.gql';
 
 @Injectable()
 export class BandService {

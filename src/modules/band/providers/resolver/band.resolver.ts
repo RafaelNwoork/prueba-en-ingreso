@@ -1,10 +1,10 @@
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BandService } from '../service/band.service';
-import { GetBandOutputGQL } from '../types/gql/get-bands-output.gql';
-import { GetBandInputGQL } from '../types/gql/get-bands-input.gql';
+import { GetBandOutputGQL } from '../../types/gql/get-bands-output.gql';
+import { GetBandInputGQL } from '../../types/gql/get-bands-input.gql';
 import { BandGQL } from 'shared/types/gql/band.gql';
-import { CreateBandGQL } from '../types/gql/create/band.gql';
-import { EditBandGQL } from '../types/gql/edit/band-input.gql';
+import { CreateBandGQL } from '../../types/gql/create/band.gql';
+import { EditBandGQL } from '../../types/gql/edit/band-input.gql';
 
 @Resolver(() => BandGQL)
 export class BandResolver {
