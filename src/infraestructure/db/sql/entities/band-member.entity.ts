@@ -12,6 +12,6 @@ export class BandMembers {
   @Column()
   role: string;
 
-  @ManyToOne(() => Band, (band) => band.members)
+  @ManyToOne(() => Band, (band) => band.members, { onDelete: 'CASCADE' })
   band: Band;
 }

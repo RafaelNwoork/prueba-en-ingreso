@@ -20,6 +20,7 @@ export class Band {
 
   @OneToMany(() => BandMembers, (band_members) => band_members.band, {
     eager: true,
+    onDelete: 'CASCADE',
   })
   members: BandMembers[];
 }

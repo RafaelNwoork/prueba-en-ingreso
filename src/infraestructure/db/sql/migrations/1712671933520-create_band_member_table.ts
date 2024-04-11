@@ -7,7 +7,7 @@ export class CreateBandMemberTable1712671933520 implements MigrationInterface {
             name VARCHAR NOT NULL,
             role VARCHAR NOT NULL,
             "bandId" INTEGER NOT NULL,
-            CONSTRAINT "bandId" FOREIGN KEY("bandId") REFERENCES band(id)
+            CONSTRAINT "bandId" FOREIGN KEY("bandId") REFERENCES band(id) ON DELETE CASCADE
         )`);
   }
 

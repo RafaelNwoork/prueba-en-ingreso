@@ -35,4 +35,9 @@ export class BandResolver {
   ): Promise<GetBandInputGQL | null> {
     return this.bandService.editBand(editBandData);
   }
+
+  @Mutation(() => Boolean)
+  async deleteBand(@Args('id') bandId: number): Promise<boolean> {
+    return this.bandService.deleteBand(bandId);
+  }
 }

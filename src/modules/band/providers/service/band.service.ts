@@ -67,4 +67,15 @@ export class BandService {
         return band;
       });
   }
+
+  async deleteBand(id: number): Promise<boolean> {
+    return this.bandRepository
+      .delete(id)
+      .then(
+        (result) =>
+          result.affected !== null &&
+          result.affected !== undefined &&
+          result.affected !== 0,
+      );
+  }
 }
